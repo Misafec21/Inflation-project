@@ -1,44 +1,114 @@
-Inflation Tracker Mexico (INPC) - Database Project
+Inflation Tracker Mexico (INPC) – Database Project
 
 Project Overview
 
-This project aims to design and implement a robust database system in MySQL to store, structure, and analyze the National Consumer Price Index (INPC) in Mexico. Rather than relying on manual data entry, the system utilizes a Python integration to extract raw data from official Banxico and INEGI APIs. This allows for a professional-grade analysis of how inflation impacts different regions and spending categories over time.
+This project focuses on the design and implementation of a relational database system in MySQL to store, organize, and analyze inflation data in Mexico using official information provided by Banco de México (Banxico) and INEGI APIs.
 
-Key Features & Scope
+The system integrates Python-based automation to extract, process, and load data directly from official API services into the database. The objective is to create a reliable and scalable platform capable of analyzing inflation behavior across different periods, economic sectors, and geographic regions of Mexico.
 
-Database Architecture (MySQL)
-The core of the system is a normalized relational database designed for high-performance queries.
-•	Core Entities: Includes Registro_Inflacion (central table), Catalogo_Indicadores, Periodos_Tiempo, and Rubros_Gasto.
-•	Scalability: The model is projected to expand to 10–12 entities to include granular geographic data (Regions, States, Cities) and internal audit logs.
-•	Data Integrity: Implements foreign keys and specific data types to prevent design errors during the extraction phase.
-Automation Engine (Python)
+⸻
 
-A Python-based ETL (Extract, Transform, Load) script serves as the bridge between official sources and the database:
+Main Objectives
 
-•	API Integration: Connects to the Banxico SieAPI to fetch JSON data.
-•	Automated Processing: Cleans and validates data before insertion into MySQL to ensure consistency.
-•	Extraction Logs: Automates the Bitacora_Extraccion table to maintain a traceable history of data updates.
+* Build a normalized MySQL database for inflation-related data.
+* Integrate Banxico and INEGI APIs for automated data extraction.
+* Develop ETL processes using Python.
+* Store historical inflation records for analysis and reporting.
+* Generate structured data that can support future dashboards, reports, and statistical analysis.
 
-Project Management
+⸻
 
-The development follows software engineering best practices to ensure timely delivery:
-•	WBS (Work Breakdown Structure): A hierarchical breakdown of tasks from API analysis to final SQL implementation.
-•	Trello Tracking: Utilization of a Kanban board to manage tasks among team members (Chan, Felix, Gaxiola, and Merin).
+System Architecture
 
-Tech Stack
-•	Database: MySQL
-•	Language: Python (for API extraction and data processing)
-•	API Sources: Banco de México (Banxico), INEGI
-•	Management: Trello, WBS Methodology
+Database (MySQL)
 
-Objectives & Problem Solving
-The primary goal is to address the social issue of inflation and its impact on purchasing power. By translating "raw numbers" into actionable insights, this project provides:
-•	Sector Analysis: Identifying which sectors (Food, Transport, Housing) are driving inflation.
-•	Geographic Comparison: Comparing price increases across different regions of Mexico.
-•	Efficient Reporting: Optimized time-based tables for fast annual and monthly average calculations.
+The database is designed following relational database normalization principles to ensure data integrity, scalability, and efficient querying.
+
+Core Tables
+
+* Registro_Inflacion – Main table containing inflation records.
+* Catalogo_Indicadores – Stores economic indicators and metadata.
+* Periodos_Tiempo – Handles monthly and yearly time references.
+* Rubros_Gasto – Stores expenditure categories such as food, transport, housing, etc.
+* Bitacora_Extraccion – Tracks API extraction processes and update logs.
+
+Data Integrity Features
+
+* Primary and foreign keys
+* Controlled data types
+* Referential integrity constraints
+* Structured relationships between entities
+
+⸻
+
+API Integration
+
+The project uses official APIs from:
+
+* Banco de México (Banxico)
+* INEGI
+
+Python scripts are responsible for:
+
+1. Connecting to APIs
+2. Retrieving JSON data
+3. Validating and cleaning information
+4. Transforming data into database-compatible formats
+5. Automatically inserting records into MySQL
+
+⸻
+
+Technologies Used
+
+* Database: MySQL
+* Programming Language: Python
+* APIs: Banxico API, INEGI API
+* Version Control: Git & GitHub
+* Project Management: Trello, WBS Methodology
+
+⸻
+
+Project Scope
+
+The database is intended to support:
+
+* Inflation trend analysis
+* Geographic comparisons between regions and states
+* Category-based inflation studies
+* Historical data storage
+* Automated update processes
+* Future integration with dashboards and visualization tools
+
+⸻
+
+Expected Outcomes
+
+The system aims to provide:
+
+* Reliable inflation datasets
+* Faster statistical queries
+* Automated data updates
+* Structured historical records
+* Improved accessibility for economic analysis and academic research
+
+⸻
 
 Team Members
-•	Chan Lauro Joseph
-•	Felix Camacho Misael Alejandro
-•	Gaxiola Elizalde Uziel Hiram
-•	Merin Zepeda Esteban Gabriel
+
+* Chan Lauro Joseph
+* Felix Camacho Misael Alejandro
+* Gaxiola Elizalde Uziel Hiram
+* Merin Zepeda Esteban Gabriel
+
+⸻
+
+Repository Purpose
+
+This repository contains:
+
+* MySQL database scripts
+* Table creation scripts
+* Insert statements
+* Audit log structures
+* ETL integration scripts
+* Documentation related to the project
