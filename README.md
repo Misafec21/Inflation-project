@@ -1,114 +1,61 @@
-Inflation Tracker Mexico (INPC) – Database Project
+# MEXICO INFLATION ANALYSIS SYSTEM
 
-Project Overview
+---
 
-This project focuses on the design and implementation of a relational database system in MySQL to store, organize, and analyze inflation data in Mexico using official information provided by Banco de México (Banxico) and INEGI APIs.
+## The Big Picture
 
-The system integrates Python-based automation to extract, process, and load data directly from official API services into the database. The objective is to create a reliable and scalable platform capable of analyzing inflation behavior across different periods, economic sectors, and geographic regions of Mexico.
+The **Mexico Inflation Analysis System** is a streamlined data engineering pipeline built to track, transform, and visualize official economic indicators. By connecting directly to the Bank of Mexico (Banxico) API, the system automates the entire journey of financial data—from raw internet metrics to high-performance database storage.
 
-⸻
+This project focuses on **three main pillars**:
+* **Extraction & Cleaning:** Pulling raw data from official sources and formatting it correctly.
+* **Relational Storage (SQL):** Structuring the data into an organized MySQL database for operational safety.
+* **NoSQL Migration (MongoDB):** Cloning pre-calculated reports into MongoDB for ultra-fast performance and analysis.
 
-Main Objectives
+---
 
-* Build a normalized MySQL database for inflation-related data.
-* Integrate Banxico and INEGI APIs for automated data extraction.
-* Develop ETL processes using Python.
-* Store historical inflation records for analysis and reporting.
-* Generate structured data that can support future dashboards, reports, and statistical analysis.
+## How the Pipeline Works
 
-⸻
+### 1. Data Ingestion & Transformation
+The system automatically connects to the Banxico API to retrieve twelve critical macroeconomic series from **2022 to 2024**. The pipeline instantly cleans this raw data, checks for consistency, and prepares it for database insertion.
 
-System Architecture
+### 2. The SQL Powerhouse (MySQL)
+Once cleaned, the data is injected into a MySQL database. To prevent messy data or duplicates, the system uses secure internal database procedures. Instead of just creating boring technical tables, MySQL generates **"Citizen Views"**—special configurations that translate complex financial data into simple, real-world metrics.
 
-Database (MySQL)
+### 3. The NoSQL Speed Booster (MongoDB)
+To make sure reading the data doesn't slow down the system, these pre-calculated financial stories are automatically **migrated and cloned** into MongoDB. This separation ensures that the main data remains safe in SQL while the analytical dashboard reads directly from MongoDB at lightning speed.
 
-The database is designed following relational database normalization principles to ensure data integrity, scalability, and efficient querying.
+---
 
-Core Tables
+## What This System Delivers
 
-* Registro_Inflacion – Main table containing inflation records.
-* Catalogo_Indicadores – Stores economic indicators and metadata.
-* Periodos_Tiempo – Handles monthly and yearly time references.
-* Rubros_Gasto – Stores expenditure categories such as food, transport, housing, etc.
-* Bitacora_Extraccion – Tracks API extraction processes and update logs.
+Instead of confusing spreadsheets, the system translates raw numbers into **six clear financial insights**:
 
-Data Integrity Features
+* **The Inflation Thermometer:** Calculates total accumulated inflation and gives a clear risk diagnosis (Low, Alert, or Red).
+* **Real Purchasing Power:** Shows exactly how much the value of money has changed in the real world over time.
+* **Smart Savings Guide:** Analyzes market trends to tell you if it is currently a good month to invest in treasury certificates (CETES).
+* **Currency Tracker:** Monitors the exact performance and fluctuations of the Mexican Peso against the US Dollar.
+* **The Seasonal Expense Map:** Identifies which month of the year is historically the most expensive for consumers.
+* **Volatility Alerts:** Breaks down whether price spikes are structural issues or just temporary jumps in volatile goods like food and fuel.
 
-* Primary and foreign keys
-* Controlled data types
-* Referential integrity constraints
-* Structured relationships between entities
+---
 
-⸻
+## Execution & Folder Structure
 
-API Integration
+### Step-by-Step Flow
+1.  **Initialize:** Run the local configuration scripts to set up your tables and automated views.
+2.  **Inject:** Execute the main pipeline script to download and store the economic data.
+3.  **Clone:** Run the migration script to copy the processed summaries into MongoDB.
+4.  **Launch:** Turn on the console interface to read from MongoDB and display the final financial reports directly on your screen.
 
-The project uses official APIs from:
+### Inside the Project
+The repository keeps things clean by separating the work into two distinct environments:
+* **The Database Folder:** Holds the blueprints for your tables, automatic logging triggers, and citizen-friendly financial views.
+* **The Python Folder:** Contains the central configuration files, data extraction tools, the migration pipeline, and the terminal user interface.
 
-* Banco de México (Banxico)
-* INEGI
+---
 
-Python scripts are responsible for:
+### Troubleshooting Made Simple
 
-1. Connecting to APIs
-2. Retrieving JSON data
-3. Validating and cleaning information
-4. Transforming data into database-compatible formats
-5. Automatically inserting records into MySQL
-
-⸻
-
-Technologies Used
-
-* Database: MySQL
-* Programming Language: Python
-* APIs: Banxico API, INEGI API
-* Version Control: Git & GitHub
-* Project Management: Trello, WBS Methodology
-
-⸻
-
-Project Scope
-
-The database is intended to support:
-
-* Inflation trend analysis
-* Geographic comparisons between regions and states
-* Category-based inflation studies
-* Historical data storage
-* Automated update processes
-* Future integration with dashboards and visualization tools
-
-⸻
-
-Expected Outcomes
-
-The system aims to provide:
-
-* Reliable inflation datasets
-* Faster statistical queries
-* Automated data updates
-* Structured historical records
-* Improved accessibility for economic analysis and academic research
-
-⸻
-
-Team Members
-
-* Chan Lauro Joseph
-* Felix Camacho Misael Alejandro
-* Gaxiola Elizalde Uziel Hiram
-* Merin Zepeda Esteban Gabriel
-
-⸻
-
-Repository Purpose
-
-This repository contains:
-
-* MySQL database scripts
-* Table creation scripts
-* Insert statements
-* Audit log structures
-* ETL integration scripts
-* Documentation related to the project
+* **Access Denied / Connection Errors:** Double-check your local database credentials and make sure your MySQL service is actually turned on.
+* **Missing Tables:** Ensure you ran the database initialization scripts *before* starting the Python programs.
+* **Empty Results:** Verify your internet connection and ensure your free Banxico API token hasn't expired.
